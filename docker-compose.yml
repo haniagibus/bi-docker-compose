@@ -37,11 +37,11 @@ services:
           cpus: '1.0'
           memory: 256M
     networks:
-      - admin_mysql_default
+      - admin-mysql_default
     entrypoint: /tmp/init-db/init-db.sh
 
 networks:
-  admin_mysql_default:
+  admin-mysql_default:
     external: true
 
 
