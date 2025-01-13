@@ -43,7 +43,7 @@ services:
 
 networks:
   admin_mysql_default:
-#    external: true
+    external: true
 
 
 
