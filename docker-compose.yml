@@ -11,7 +11,6 @@ services:
 #      - prestashop_network
 
   prestashop:
-    container_name: prestashop
     image: ghcr.io/haniagibus/bi-winx-club:latest
     restart: unless-stopped
     depends_on:
