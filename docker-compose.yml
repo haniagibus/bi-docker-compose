@@ -11,7 +11,7 @@ services:
 #      - prestashop_network
 
   prestashop:
-    image: haniag/bi-winx-club:1.0.0
+    image: haniag/bi-winx-club:1.0.1
     depends_on:
       - mysql
     ports:
