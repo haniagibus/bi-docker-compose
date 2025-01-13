@@ -29,6 +29,14 @@ services:
       PS_INSTALL_AUTO: 1
       PS_SSL_ENABLED: "1"
       PS_SSL_ENABLED_EVERYWHERE: "1"
+    deploy:
+      resources:
+        limits:
+          cpus: '2.0'
+          memory: 512M
+        reservations:
+          cpus: '1.0'
+          memory: 256M
     networks:
       - admin_mysql_default
     entrypoint: /tmp/init-db/init-db.sh
