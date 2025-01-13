@@ -1,0 +1,80 @@
+version: '3'
+services:
+#  mysql:
+#    container_name: some-mysql
+#    image: mysql:5.7
+#    restart: unless-stopped
+#    environment:
+#      MYSQL_ROOT_PASSWORD: admin
+#      MYSQL_DATABASE: prestashop
+#    networks:
+#      - prestashop_network
+
+  prestashop:
+    container_name: prestashop
+    image: ghcr.io/haniagibus/bi-winx-club:latest
+    restart: unless-stopped
+    depends_on:
+      - mysql
+    ports:
+      - 18897:443
+    environment:
+      DB_SERVER: admin-mysql_db
+      DB_NAME: BE_188974
+      DB_USER: root
+      DB_PASSWD: student
+      PS_FOLDER_ADMIN: admin4577
+      PS_FOLDER_INSTALL: install4577
+      PS_DOMAIN: localhost:18897
+      PS_INSTALL_AUTO: 1
+      PS_SSL_ENABLED: "1"
+      PS_SSL_ENABLED_EVERYWHERE: "1"
+    networks:
+      - admin_mysql_default
+    entrypoint: /tmp/init-db/init-db.sh
+
+networks:
+  admin_mysql_default:
+    external: true
+
+
+
+#version: '3'
+#services:
+#  mysql:
+#    container_name: some-mysql
+#    image: mysql:5.7
+#    restart: unless-stopped
+#    environment:
+#      MYSQL_ROOT_PASSWORD: admin
+#      MYSQL_DATABASE: prestashop
+#    networks:
+#      - prestashop_network
+#
+#  prestashop:
+#    container_name: prestashop
+#    image: bi-winx-club
+#    restart: unless-stopped
+#    depends_on:
+#      - mysql
+#    ports:
+#      - 18897:443
+#    environment:
+#      DB_SERVER: some-mysql
+#      DB_NAME: prestashop
+#      DB_USER: root
+#      DB_PASSWD: admin
+#      PS_FOLDER_ADMIN: admin4577
+#      PS_FOLDER_INSTALL: install4577
+#      PS_DOMAIN: localhost:18897
+#      PS_INSTALL_AUTO: 1
+#      PS_SSL_ENABLED: "1"
+#      PS_SSL_ENABLED_EVERYWHERE: "1"
+#    networks:
+#      - prestashop_network
+#    #    volumes:
+#    #      - ./psdata/html:/var/www/html
+#    entrypoint: /tmp/init-db/init-db.sh
+#
+#networks:
+#  prestashop_network:
